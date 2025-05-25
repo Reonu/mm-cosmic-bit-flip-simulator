@@ -1,0 +1,7 @@
+{
+    "name": "Cosmic_Bit_Flip_Simulator",
+    "version_number": "1.0.0",
+    "website_url": "https://github.com/Reonu/mm-cosmic-bit-flip-simulator",
+    "description": "SEIZURE WARNING. LOUD NOISES WARNING. Flips bits in the game's RAM randomly.",
+    "dependencies": []
+}

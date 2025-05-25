@@ -5,27 +5,32 @@
 
 # Unique ID of this mod. Pick something long enough that it'll never be the same as any other mod.
 # The name displayed in the mod management menu is separate from this so this doesn't need to be human readable.
-id = "mm_recomp_mod_template"
+id = "mm_solar_storm"
 
 # Version of this mod.
 version = "1.0.0"
 
 # The name that will show up for this mod in the mod menu. This should be human readable.
-display_name = "Always Spin Attack"
+display_name = "Cosmic Bit Flip Simulator"
 
 # The description that will show up when this mod is displayed in the mod menu. This should be human readable.
 description =  """
-This is an example mod for Majora's Mask: Recompiled that can be used as a template for creating mods. \
-When this mod is enabled, you will always perform a quickspin when swinging your sword.
+DO NOT USE THIS MOD IF YOU ARE PRONE TO SEIZURES AS IT MAY RESULT IN FLASHING LIGHTS
+DO NOT USE HEADPHONES WITH HIGH VOLUME WHILE USING THIS MOD
+THIS MOD DISABLES SAVING BY DEFAULT BUT YOU SHOULD STILL DISABLE AUTOSAVING AND BACK UP YOUR SAVE JUST IN CASE
 
-For more details, see https://github.com/Zelda64Recomp/MMRecompModTemplate."""
+Experience the Cosmic Bit Flip experience from the safety of your home without having to actually go into the middle of a solar storm!
+
+You can set the chance of getting a random bit flip each frame from the mod's settings.
+
+This mod WILL result in crashes, but hopefully somethign funny willh appen before crashing."""
 
 # A short description that will show up in this mod's entry in the mod list. This should be human readable and kept short
 # to prevent it from being cut off due to the limited space.
-short_description = "Always perform a quickspin when swinging your sword."
+short_description = "Seizure warning. Loud noises warning. Flips bits in the game's RAM randomly."
 
 # Authors of this mod.
-authors = [ "Your name here" ]
+authors = [ "Reonu" ]
 
 # ID of the target recomp game.
 game_id = "mm"
@@ -52,38 +57,31 @@ native_libraries = [
 elf_path = "build/mod.elf"
 
 # Output mod filename.
-mod_filename = "mm_recomp_mod_template"
+mod_filename = "mm_solar_storm"
 
 # Reference symbol files.
 func_reference_syms_file = "Zelda64RecompSyms/mm.us.rev1.syms.toml"
 data_reference_syms_files = [ "Zelda64RecompSyms/mm.us.rev1.datasyms.toml", "Zelda64RecompSyms/mm.us.rev1.datasyms_static.toml" ]
 
 # Additional files to include in the mod.
-additional_files = [ ]
+additional_files = ["thumb.dds"]
 
 [[manifest.config_options]]
-id = "enum_option"
-name = "Enum Option"
-description = "Test enum config option"
-type = "Enum"
-options = [ "First", "Second" ]
-default = "First"
-
-[[manifest.config_options]]
-id = "number_option"
-name = "Number Option"
-description = "Test number config option."
+id = "bit_flip_chance"
+name = "Bit Flip Chance"
+description = "Set the chance of a bit flip happening each frame."
 type = "Number"
 min = 0
-max = 10
+max = 100
 step = 0.1
 precision = 1
-percent = false
-default = 1
+percent = true
+default = 50
 
 [[manifest.config_options]]
-id = "string_option"
-name = "String Option"
-description = "Test string config option."
-type = "String"
-default = "Lorem Ipsum"
+id = "allow_saving"
+name = "Allow Saving"
+description = "Allows the game to save even though this mod is active. Will most likely result on savefile corruption. Do not complain if it does."
+type = "Enum"
+options = [ "Off", "On" ]
+default = "Off"

@@ -12,17 +12,19 @@ int get_random_value() {
     return Rand_ZeroOne() * 0x7A1200;
 }
 void* pointer;
-RECOMP_CALLBACK("*", recomp_on_play_main) 
-void solar_storm (PlayState* play) {
+RECOMP_CALLBACK("*", recomp_on_play_main)
+void solar_storm(PlayState* play) {
     f32 bitflipChance = recomp_get_config_u32("bit_flip_chance") / 100.0f;
     if (Rand_ZeroOne() > bitflipChance) {
-        return; 
+        return;
     }
-    pointer = ((void*)(uintptr_t)get_random_value()) + 0x80000000;
-    recomp_printf("Flipping bit at address: %p\n", pointer);
+    uintptr_t rand_addr = (uintptr_t)get_random_value() + 0x80000000;
+    int bit_index = (int)(Rand_ZeroOne() * 8);
+    pointer = (void*)rand_addr;
+    recomp_printf("Flipping bit %d at address: %p\n", bit_index, pointer);
     if (pointer != NULL) {
-        int* value = (int*)pointer;
-        *value ^= 0x1; 
+        char* value = (char*)pointer;
+        *value ^= (1 << bit_index);
     }
 }
 
